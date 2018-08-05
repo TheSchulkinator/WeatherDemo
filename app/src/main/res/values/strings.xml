@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">WeatherDemo</string>
+
+    <!-- LayoutUtils-->
+    <string name="location_error">No current location can be found please enable gps in location settings</string>
+
+    <!--NetworkUtils-->
+    <string name="base_url" translatable="false">http://api.openweathermap.org/data/2.5/</string>
+    <string name="current_path" translatable="false">weather</string>
+    <string name="forecast_path" translatable="false">forecast</string>
+    <string name="forecast_daily_path" translatable="false">daily</string>
+    <string name="zip_postfix" translatable="false">,us</string>
+    <string name="zip_key" translatable="false">zip</string>
+    <string name="mode_key" translatable="false">mode</string>
+    <string name="mode_value" translatable="false">JSON</string>
+    <string name="units_key" translatable="false">units</string>
+    <string name="units_value" translatable="false">imperial</string>
+    <string name="day_count_key" translatable="false">cnt</string>
+    <string name="day_count_value" translatable="false">5</string>
+    <string name="appid_key" translatable="false">appid</string>
+
+    <!--Menu strings-->
+    <string name="menu_current">Current</string>
+    <string name="menu_forecast">Forecast</string>
+
 </resources>
