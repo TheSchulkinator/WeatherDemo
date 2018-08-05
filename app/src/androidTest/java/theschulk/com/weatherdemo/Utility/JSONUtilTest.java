@@ -23,7 +23,7 @@ public class JSONUtilTest {
 
         String expectedTemp = "90.59";
 
-        String actualTemp = JSONUtils.getCurrentWeatherTemp(appContext, jsonResponse);
+        String actualTemp = JSONUtils.getCurrentWeatherTemp(jsonResponse);
 
         assertEquals(expectedTemp, actualTemp);
 
