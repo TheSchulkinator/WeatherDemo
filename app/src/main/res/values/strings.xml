@@ -28,4 +28,8 @@
     <string name="high">High: </string>
     <string name="low">Low: </string>
 
+    <!--Current Weather Activity-->
+    <string name="current_weather_title">Current Temperature </string>
+    <string name="fahrenheit">F</string>
+
 </resources>

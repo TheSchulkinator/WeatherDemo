@@ -45,15 +45,20 @@ public class FiveDayForecastAdapter extends RecyclerView.Adapter<FiveDayForecast
         holder.iconImageView.setImageResource(context.getResources().
                 getIdentifier(currentIconName, "drawable", context.getPackageName()));
 
-        //get date from unix
+        //get string values formatted
         String currentDate = DateUtility.formatDate(forecasts.get(position).getForecastDate());
+        String high = context.getString(R.string.high) +
+                forecasts.get(position).getHighTemp() + (char) 0x00B0 +
+                context.getString(R.string.fahrenheit);
+        String low = context.getString(R.string.low) +
+                forecasts.get(position).getLowTemp() +
+                (char) 0x00B0 +
+                context.getString(R.string.fahrenheit);
 
         //set text views text
         holder.dateTextView.setText(currentDate);
-        holder.highTextView.setText(context.getString(R.string.high) +
-                forecasts.get(position).getHighTemp());
-        holder.lowTextView.setText(context.getString(R.string.low) +
-                forecasts.get(position).getLowTemp());
+        holder.highTextView.setText(high);
+        holder.lowTextView.setText(low);
 
     }
 

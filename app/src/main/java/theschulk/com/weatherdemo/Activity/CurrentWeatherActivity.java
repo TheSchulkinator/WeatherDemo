@@ -19,14 +19,24 @@ import theschulk.com.weatherdemo.Utility.NetworkUtils;
 public class CurrentWeatherActivity extends AppCompatActivity {
 
     TextView currentTempTextView;
+    TextView weatherTitle;
+
+    String lastKnownZip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_current_weather);
 
-        String lastKnownZip = LocationUtils.getZipCode(this, this);
-        new FetchCurrentWeatherTask().execute(lastKnownZip);
+        lastKnownZip = LocationUtils.getZipCode(this, this);
+
+        //error check if zip code empty
+        if(lastKnownZip.equals(getString(R.string.location_error)) || lastKnownZip == ""){
+            currentTempTextView.setText(R.string.location_error);
+        } else {
+            new FetchCurrentWeatherTask().execute(lastKnownZip);
+        }
+
     }
 
     public class FetchCurrentWeatherTask extends AsyncTask<String, Void, String>{
@@ -59,7 +69,14 @@ public class CurrentWeatherActivity extends AppCompatActivity {
         protected void onPostExecute(String temp) {
             if(temp != null){
                 currentTempTextView = findViewById(R.id.tv_current_temp);
-                currentTempTextView.setText(temp);
+                weatherTitle = findViewById(R.id.tv_current_weather_title);
+
+                String titleString = getString(R.string.current_weather_title) +
+                        "(" + lastKnownZip + ")";
+                String tempString = temp + (char) 0x00B0 + getString(R.string.fahrenheit);
+
+                currentTempTextView.setText(tempString);
+                weatherTitle.setText(titleString);
             }
         }
     }

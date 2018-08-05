@@ -1,7 +1,5 @@
 package theschulk.com.weatherdemo.Utility;
 
-import android.content.Context;
-import android.support.annotation.NonNull;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -9,10 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 import theschulk.com.weatherdemo.Model.ForecastModel;
 
