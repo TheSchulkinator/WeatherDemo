@@ -23,4 +23,9 @@
     <string name="menu_current">Current</string>
     <string name="menu_forecast">Forecast</string>
 
+    <!--Forecast Strings-->
+    <string name="forecast_title">Five Day Forecast</string>
+    <string name="high">High: </string>
+    <string name="low">Low: </string>
+
 </resources>

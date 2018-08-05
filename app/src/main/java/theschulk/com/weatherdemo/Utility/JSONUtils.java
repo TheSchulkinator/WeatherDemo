@@ -1,14 +1,18 @@
 package theschulk.com.weatherdemo.Utility;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
-import java.util.WeakHashMap;
+import java.util.ListIterator;
 
 import theschulk.com.weatherdemo.Model.ForecastModel;
 
@@ -16,11 +20,10 @@ public class JSONUtils {
 
     /**
      * Get current Temperature out of returned string
-     * @param context
      * @param JsonString
      * @return
      */
-    public static String getCurrentWeatherTemp(Context context, String JsonString){
+    public static String getCurrentWeatherTemp(String JsonString){
         //values to be parsed out of JSON
         final String MAIN = "main";
         final String TEMP = "temp";
@@ -43,20 +46,19 @@ public class JSONUtils {
 
     /**
      * Get five day forecast from JSON api call
-     * @param context
      * @param JsonString
      * @return
      */
-    public static List<ForecastModel> getFiveDayForecast(Context context, String JsonString){
+    public static List<ForecastModel> getFiveDayForecast(String JsonString){
         final String LIST = "list";
-        final String MAIN = "main";
+        final String TEMP = "temp";
         final String WEATHER = "weather";
         final String UNIX_DATE = "dt";
-        final String LOW_TEMP = "temp_min";
-        final String MAX_TEMP = "temp_min";
+        final String LOW_TEMP = "min";
+        final String MAX_TEMP = "max";
         final String ICON = "icon";
 
-        List<ForecastModel> fiveDayForecast = null;
+        List<ForecastModel> fiveDayForecast = new ArrayList<>();
 
         //Get Json List Object
         try {
@@ -67,7 +69,7 @@ public class JSONUtils {
 
                 ForecastModel forecast = new ForecastModel();
                 JSONObject currentJson = listJSONArray.getJSONObject(i);
-                JSONObject mainJson = currentJson.getJSONObject(MAIN);
+                JSONObject mainJson = currentJson.getJSONObject(TEMP);
                 JSONArray weatherJSONArray = currentJson.getJSONArray(WEATHER);
                 JSONObject weatherJSONObject = weatherJSONArray.getJSONObject(0);
 
