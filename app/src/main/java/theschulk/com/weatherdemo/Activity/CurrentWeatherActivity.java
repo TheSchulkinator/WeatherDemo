@@ -114,6 +114,9 @@ public class CurrentWeatherActivity extends AppCompatActivity {
 
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
                     Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+        } else {
+            lastKnownZip = LocationUtils.getZipCode(this, this);
+            new FetchCurrentWeatherTask().execute(lastKnownZip);
         }
 
     }
